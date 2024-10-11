@@ -11,6 +11,7 @@ nvim配置
 
 lsp configs:
 <ul>
+<li>python</li>
 <li>typescript:</li>
 npm install -g typescript typescript-language-server<br/>
 npm i -g @vue/typescript-plugin<br/>
