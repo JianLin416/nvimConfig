@@ -25,6 +25,15 @@ local opts = { noremap = true, silent = true }
 vim.g.mapleader    = " "
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
+-- 禁用终端的暂停功能
+vim.cmd('set ttystop=')
+vim.cmd('set ttymouse=xterm')
+
+-- 映射 Ctrl+S 保存文件
+vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-s>', '<Esc>:w<CR>a', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<C-s>', '<Esc>:w<CR>gv', { noremap = true, silent = true })
+
 vim.opt.guicursor = { --配置nvim的光标样式
   "i:ver25",
   "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
