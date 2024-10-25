@@ -57,7 +57,6 @@ require("mason").setup({ --使用mason插件
 
 require("mason-lspconfig").setup({ --确保已安装的lsp
 	ensure_installed = {
-		"pyright"
 	}
 })
 
@@ -116,10 +115,6 @@ require("lspconfig").cssls.setup { --lsp css NEED TO INSTALL BY NPM
 
 require("lspconfig").html.setup { --lsp html NEED TO INSTALL BY NPM
   capabilities = capabilities,
-}
-
-require("lspconfig").pyright.setup {
-	capabilities = capabilities,
 }
 
 vim.cmd("colorscheme nordfox") --设置nvim主题
