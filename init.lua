@@ -21,14 +21,27 @@ vim.opt.shiftwidth = 2
 
 local opts = { noremap = true, silent = true }
 
--- space + e 快捷键 打开nvim-tree
+-- space+e 打开nvim-tree
 vim.g.mapleader    = " "
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
--- 映射 Ctrl+S 保存文件
+-- Ctrl+s 保存文件
 vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-s>', '<Esc>:w<CR>a', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<C-s>', '<Esc>:w<CR>gv', { noremap = true, silent = true })
+-- Ctrl+a 选中所有文本
+vim.api.nvim_set_keymap('n', '<C-a>', 'ggVG', { noremap = true, silent = true })
+-- Ctrl+d 选中单词
+vim.api.nvim_set_keymap('n', '<C-d>', 'viw', { noremap = true, silent = true })
+-- Ctrl+c、x、v 复制，剪切，粘贴快捷键
+vim.api.nvim_set_keymap('v', '<C-c>', '"+y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<C-x>', '"+x', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-v>', '"+p', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-v>', '<Esc>"+pa', { noremap = true, silent = true })
+-- Ctrl+z 撤销
+vim.api.nvim_set_keymap('n', '<C-z>', 'u', { noremap = true, silent = true })
+-- Ctrl+y 重做
+vim.api.nvim_set_keymap('n', '<C-y>', '<C-r>', { noremap = true, silent = true })
 
 vim.opt.guicursor = { --配置nvim的光标样式
   "i:ver25",
@@ -83,12 +96,12 @@ cmp.setup({
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities() --通过此变量 将lsp添加到nvim_lsp的列表中
 
-require'lspconfig'.ts_ls.setup { --lsp ts_ls NEED TO INSTALL BY NPM
+require'lspconfig'.ts_ls.setup { --lsp ts_ls
   init_options = {
     plugins = {
       {
-        name = "@vue/typescript-plugin", --NEED TO INSTALL BY NPM
-        location = "/home/jianlin/.nvm/versions/node/v20.18.0/lib/node_modules/@vue/typescript-plugin",
+        name = "@vue/typescript-plugin",
+        location = "/home/lijianlin/.nvm/versions/node/v20.18.0/lib/node_modules/@vue/typescript-plugin",
         languages = {"javascript", "typescript", "vue"},
       },
     },
@@ -109,11 +122,11 @@ require("lspconfig").volar.setup { --lsp volar
   capabilities = capabilities,
 }
 
-require("lspconfig").cssls.setup { --lsp css NEED TO INSTALL BY NPM
+require("lspconfig").cssls.setup { --lsp css
   capabilities = capabilities,
 }
 
-require("lspconfig").html.setup { --lsp html NEED TO INSTALL BY NPM
+require("lspconfig").html.setup { --lsp html
   capabilities = capabilities,
 }
 
