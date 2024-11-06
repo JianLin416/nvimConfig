@@ -54,6 +54,8 @@ require('lualine').setup { --使用lualine插件（底下的状态栏）
   options = { theme = 'onedark' } --设置lualine的配色主题
 }
 
+require('mini.indentscope').setup() 
+
 require('nightfox').setup({ --设置nvim的配色主题
   options = { transparent = true }
 })
