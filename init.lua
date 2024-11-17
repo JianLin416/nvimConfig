@@ -54,7 +54,14 @@ require('lualine').setup { --使用lualine插件（底下的状态栏）
   options = { theme = 'onedark' } --设置lualine的配色主题
 }
 
-require('mini.indentscope').setup() 
+require('mini.indentscope').setup()
+
+require('barbar').setup {
+	animation = false,
+	sidebar_filetypes = {
+		NvimTree = true,
+	}
+}
 
 require('nightfox').setup({ --设置nvim的配色主题
   options = { transparent = true }
@@ -103,7 +110,7 @@ require'lspconfig'.ts_ls.setup { --lsp ts_ls
     plugins = {
       {
         name = "@vue/typescript-plugin",
-        location = "/home/lijianlin/.nvm/versions/node/v20.18.0/lib/node_modules/@vue/typescript-plugin",
+        location = "/home/lijia/.local/share/pnpm/global/5/node_modules/@vue/typescript-plugin",
         languages = {"javascript", "typescript", "vue"},
       },
     },
