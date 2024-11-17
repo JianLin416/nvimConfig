@@ -7,6 +7,7 @@ nvim配置
   <li>美化</li>
   <li>多光标</li>
   <li>文件树</li>
+  <li>缓冲区显示</li>
 </ul>
 
 lsp configs:
