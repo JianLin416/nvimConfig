@@ -58,9 +58,7 @@ require('mini.indentscope').setup()
 
 require('barbar').setup {
 	animation = false,
-	sidebar_filetypes = {
-		NvimTree = true,
-	}
+	auto_hide = true
 }
 
 require('nightfox').setup({ --设置nvim的配色主题
