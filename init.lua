@@ -62,7 +62,6 @@ require('barbar').setup {
 }
 
 require('nightfox').setup({ --设置nvim的配色主题
-  options = { transparent = true }
 })
 
 require("mason").setup({ --使用mason插件
@@ -137,4 +136,4 @@ require("lspconfig").html.setup { --lsp html
   capabilities = capabilities,
 }
 
-vim.cmd("colorscheme nordfox") --设置nvim主题
+vim.cmd("colorscheme dayfox") --设置nvim主题
