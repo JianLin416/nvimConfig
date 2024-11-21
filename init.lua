@@ -61,9 +61,9 @@ require('barbar').setup {
 	auto_hide = true
 }
 
-require('github-theme').setup({ --设置nvim的配色主题
+require('nightfox').setup({ --设置nvim的配色主题
+	options = { transparent = true }
 })
-
 require("mason").setup({ --使用mason插件
   ui = {
     icons = {
@@ -136,4 +136,4 @@ require("lspconfig").html.setup { --lsp html
   capabilities = capabilities,
 }
 
-vim.cmd("colorscheme github_light") --设置nvim主题
+vim.cmd("colorscheme nordfox") --设置nvim主题
