@@ -51,7 +51,7 @@ vim.opt.guicursor = { --配置nvim的光标样式
 require("lazy").setup("plugins") --使用lazy插件
 
 require('lualine').setup { --使用lualine插件（底下的状态栏）
-  options = { theme = 'onedark' } --设置lualine的配色主题
+  options = { theme = 'auto' } --设置lualine的配色主题
 }
 
 require('mini.indentscope').setup()
@@ -61,7 +61,7 @@ require('barbar').setup {
 	auto_hide = true
 }
 
-require('nightfox').setup({ --设置nvim的配色主题
+require('github-theme').setup({ --设置nvim的配色主题
 })
 
 require("mason").setup({ --使用mason插件
@@ -136,4 +136,4 @@ require("lspconfig").html.setup { --lsp html
   capabilities = capabilities,
 }
 
-vim.cmd("colorscheme dayfox") --设置nvim主题
+vim.cmd("colorscheme github_light") --设置nvim主题
