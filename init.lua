@@ -43,6 +43,9 @@ vim.api.nvim_set_keymap('n', '<C-z>', 'u', { noremap = true, silent = true })
 -- Ctrl+y 重做
 vim.api.nvim_set_keymap('n', '<C-y>', '<C-r>', { noremap = true, silent = true })
 
+-- space+d 显示报错
+vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float(nil, { focusable = false })<CR>', { noremap = true, silent = true })
+
 vim.opt.guicursor = { --配置nvim的光标样式
   "i:ver25",
   "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
