@@ -1,7 +1,10 @@
 local opt = vim.opt
 opt.number = true
 opt.relativenumber = true
-vim.opt.termguicolors = true
+opt.termguicolors = true
+opt.foldmethod = "indent"
+opt.foldlevel = 99
+opt.foldenable = false
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -67,6 +70,44 @@ require('onedark').setup { -- 设置ondark配色主题
 	style = 'dark',
 	transparent = true
 }
+
+require('conform').setup({ --使用conform插件 保存自动格式化
+	formatters_by_ft = {
+		swift = { "swiftformat" },
+		html = {
+			"html",
+			formatter_on_save = true,
+		},
+		css = {
+			"cssls",
+			formatter_on_save = true,
+		},
+		javascript = {
+			formatters = { "volar", "ts_ls" },
+			run_all_formatters = true,
+			formatter_on_save = true,
+		},
+		typescript = {
+			formatters = { "volar", "ts_ls" },
+			run_all_formatters = true,
+			formatter_on_save = true,
+		},
+		vue = {
+			formatters = { "volar", "ts_ls" },
+			run_all_formatters = true,
+			formatter_on_save = true,
+		},
+	},
+	format_on_save = function(bufnr)
+		local ignore_filetypes = { "oil" }
+		if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+			return
+		end
+
+		return { timeout_ms = 500, lsp_fallback = true }
+	end,
+	log_level = vim.log.levels.ERROR,
+})
 
 require("mason").setup({ --使用mason插件
   ui = {
