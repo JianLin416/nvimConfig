@@ -26,22 +26,17 @@ vim.g.mapleader    = " "
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
 -- Ctrl+s 保存文件
-vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-s>', '<Esc>:w<CR>a', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<C-s>', '<Esc>:w<CR>gv', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Cmd-s>', ':w<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<Cmd-s>', '<Esc>:w<CR>a', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<Cmd-s>', '<Esc>:w<CR>gv', { noremap = true, silent = true })
 -- Ctrl+a 选中所有文本
-vim.api.nvim_set_keymap('n', '<C-a>', 'ggVG', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Cmd-a>', 'ggVG', { noremap = true, silent = true })
 -- Ctrl+d 选中单词
-vim.api.nvim_set_keymap('n', '<C-d>', 'viw', { noremap = true, silent = true })
--- Ctrl+c、x、v 复制，剪切，粘贴快捷键
-vim.api.nvim_set_keymap('v', '<C-c>', '"+y', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<C-x>', '"+x', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-v>', '"+p', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-v>', '<Esc>"+pa', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Cmd-d>', 'viw', { noremap = true, silent = true })
 -- Ctrl+z 撤销
-vim.api.nvim_set_keymap('n', '<C-z>', 'u', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Cmd-z>', 'u', { noremap = true, silent = true })
 -- Ctrl+y 重做
-vim.api.nvim_set_keymap('n', '<C-y>', '<C-r>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Cmd-y>', '<C-r>', { noremap = true, silent = true })
 
 -- space+d 显示报错
 vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float(nil, { focusable = false })<CR>', { noremap = true, silent = true })
@@ -59,14 +54,20 @@ require('lualine').setup { --使用lualine插件（底下的状态栏）
 
 require('mini.indentscope').setup()
 
-require('barbar').setup {
+require('barbar').setup { -- 配置缓冲区显示插件
 	animation = false,
 	auto_hide = true
 }
 
-require('nightfox').setup({ --设置nvim的配色主题
+require('nightfox').setup { --设置nightfox配色主题
 	options = { transparent = true }
-})
+}
+
+require('onedark').setup { -- 设置ondark配色主题
+	style = 'dark',
+	transparent = true
+}
+
 require("mason").setup({ --使用mason插件
   ui = {
     icons = {
@@ -110,7 +111,7 @@ require'lspconfig'.ts_ls.setup { --lsp ts_ls
     plugins = {
       {
         name = "@vue/typescript-plugin",
-        location = "/home/lijia/.local/share/pnpm/global/5/node_modules/@vue/typescript-plugin",
+        location = "/Users/lijianlin/Library/pnpm/global/5/node_modules/@vue/typescript-plugin",
         languages = {"javascript", "typescript", "vue"},
       },
     },
@@ -139,4 +140,10 @@ require("lspconfig").html.setup { --lsp html
   capabilities = capabilities,
 }
 
-vim.cmd("colorscheme nordfox") --设置nvim主题
+require("lspconfig").sourcekit.setup { -- lsp swift && swiftui
+	capabilities = capabilities,
+	filetypes = { "swift", "objective-c", "objective-cpp" },
+}
+
+-- vim.cmd("colorscheme nordfox") --设置nvim主题
+vim.cmd('colorscheme onedark')
