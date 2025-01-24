@@ -24,6 +24,8 @@ vim.opt.shiftwidth = 2
 
 local opts = { noremap = true, silent = true }
 
+vim.g.barbar_auto_setup = false
+
 -- space+e 打开nvim-tree
 vim.g.mapleader    = " "
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
@@ -61,6 +63,10 @@ require('barbar').setup { -- 配置缓冲区显示插件
 	animation = false,
 	auto_hide = true
 }
+
+require("nvim-tree").setup() --使用nvim-tree插件
+
+require("xcodebuild").setup() --使用xcodebuild插件
 
 require('nightfox').setup { --设置nightfox配色主题
 	options = { transparent = true }
