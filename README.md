@@ -11,17 +11,27 @@ nvim配置
   <li>github copilot</li>
   <li>保存自动格式化</li>
   <li>代码折叠</li>
+  <li>浮动终端</li>
 </ul>
 
 lsp configs:
+<b>
+  <br />
+  npm install -g typescript typescript-language-server @vue/typescript-plugin @vue/language-server vscode-langservers-extracted
+</b>
+<br />
+注意配置@vue/typescript-plugin的路径
 <ul>
-<li>typescript && react:</li>
-npm install -g typescript typescript-language-server<br/>
-npm i -g @vue/typescript-plugin<br/>
-注意配置@vue/typescript-plugin的路径<br/>
-<li>vue:</li>
-npm install -g @vue/language-server
-<li>html && css:</li>
-npm i -g vscode-langservers-extracted
-<li>swift && swiftui</li>
+  <li>
+    typescript && react
+  </li>
+  <li>
+    vue
+  </li>
+  <li>
+    html && css
+  </li>
+  <li>
+    swift && swiftui
+  </li>
 </ul>

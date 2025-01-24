@@ -109,6 +109,16 @@ require('conform').setup({ --使用conform插件 保存自动格式化
 	log_level = vim.log.levels.ERROR,
 })
 
+require('toggleterm').setup({ --使用toggleterm插件
+	open_mapping = [[<c-t>]],
+	hide_numbers = true,
+	start_in_insert = true,
+	insert_mappings = true,
+	persist_size = true,
+	direction = 'float',
+	close_on_exit = true,
+})
+
 require("mason").setup({ --使用mason插件
   ui = {
     icons = {
@@ -121,6 +131,10 @@ require("mason").setup({ --使用mason插件
 
 require("mason-lspconfig").setup({ --确保已安装的lsp
 	ensure_installed = {
+		"volar",
+		"ts_ls",
+		"html",
+		"cssls"
 	}
 })
 
