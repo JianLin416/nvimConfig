@@ -38,10 +38,6 @@ vim.api.nvim_set_keymap('v', '<Cmd-s>', '<Esc>:w<CR>gv', { noremap = true, silen
 vim.api.nvim_set_keymap('n', '<Cmd-a>', 'ggVG', { noremap = true, silent = true })
 -- Ctrl+d 选中单词
 vim.api.nvim_set_keymap('n', '<Cmd-d>', 'viw', { noremap = true, silent = true })
--- Ctrl+z 撤销
-vim.api.nvim_set_keymap('n', '<Cmd-z>', 'u', { noremap = true, silent = true })
--- Ctrl+y 重做
-vim.api.nvim_set_keymap('n', '<Cmd-y>', '<C-r>', { noremap = true, silent = true })
 
 -- space+d 显示报错
 vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float(nil, { focusable = false })<CR>', { noremap = true, silent = true })
@@ -69,7 +65,9 @@ require("nvim-tree").setup() --使用nvim-tree插件
 require("xcodebuild").setup() --使用xcodebuild插件
 
 require('nightfox').setup { --设置nightfox配色主题
-	options = { transparent = true }
+	options = {
+		transparent = true
+	}
 }
 
 require('onedark').setup { -- 设置ondark配色主题
@@ -115,16 +113,6 @@ require('conform').setup({ --使用conform插件 保存自动格式化
 	log_level = vim.log.levels.ERROR,
 })
 
-require('toggleterm').setup({ --使用toggleterm插件
-	open_mapping = [[<c-t>]],
-	hide_numbers = true,
-	start_in_insert = true,
-	insert_mappings = true,
-	persist_size = true,
-	direction = 'float',
-	close_on_exit = true,
-})
-
 require("mason").setup({ --使用mason插件
   ui = {
     icons = {
@@ -140,7 +128,9 @@ require("mason-lspconfig").setup({ --确保已安装的lsp
 		"volar",
 		"ts_ls",
 		"html",
-		"cssls"
+		"cssls",
+		"pyright",
+		"gopls"
 	}
 })
 
@@ -204,6 +194,14 @@ require("lspconfig").html.setup { --lsp html
 require("lspconfig").sourcekit.setup { -- lsp swift && swiftui
 	capabilities = capabilities,
 	filetypes = { "swift", "objective-c", "objective-cpp" },
+}
+
+require("lspconfig").pyright.setup { -- lsp python
+	capabilities = capabilities,
+}
+
+require("lspconfig").gopls.setup{ -- lsp go
+	capabilities = capabilities,
 }
 
 -- vim.cmd("colorscheme nordfox") --设置nvim主题
