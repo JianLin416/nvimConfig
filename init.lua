@@ -19,8 +19,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.opt.tabstop    = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop    = 4
+vim.opt.shiftwidth = 4
 
 local opts = { noremap = true, silent = true }
 
@@ -29,15 +29,6 @@ vim.g.barbar_auto_setup = false
 -- space+e 打开nvim-tree
 vim.g.mapleader    = " "
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
-
--- Ctrl+s 保存文件
-vim.api.nvim_set_keymap('n', '<Cmd-s>', ':w<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<Cmd-s>', '<Esc>:w<CR>a', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<Cmd-s>', '<Esc>:w<CR>gv', { noremap = true, silent = true })
--- Ctrl+a 选中所有文本
-vim.api.nvim_set_keymap('n', '<Cmd-a>', 'ggVG', { noremap = true, silent = true })
--- Ctrl+d 选中单词
-vim.api.nvim_set_keymap('n', '<Cmd-d>', 'viw', { noremap = true, silent = true })
 
 -- space+d 显示报错
 vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float(nil, { focusable = false })<CR>', { noremap = true, silent = true })
@@ -101,6 +92,10 @@ require('conform').setup({ --使用conform插件 保存自动格式化
 			run_all_formatters = true,
 			formatter_on_save = true,
 		},
+    	go = {
+      		"gopls",
+      		format_on_save = true
+    	}
 	},
 	format_on_save = function(bufnr)
 		local ignore_filetypes = { "oil" }
